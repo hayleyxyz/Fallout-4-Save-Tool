@@ -32,7 +32,10 @@ namespace f4st.Forms {
 
                     overviewFragment.loadSave(save);
                     idBlocksFragment.loadSave(save);
+                    idBlocksTabPage.Text = String.Format("{0} ({1:n0})", strings.IdBlocks, save.idBlocks.Count);
+
                     formBlocksFragment.loadSave(save);
+                    formBlocksTabPage.Text = String.Format("{0} ({1:n0})", strings.FormBlocks, save.formBlocks.Count);
                 }
             }
         }

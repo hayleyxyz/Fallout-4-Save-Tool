@@ -24,7 +24,7 @@ namespace f4st.Fragments {
 
         public void loadSave(SaveFile saveFile) {
             formBlocksList.SetObjects(saveFile.formBlocks);
-
+            
             formBlocksList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 

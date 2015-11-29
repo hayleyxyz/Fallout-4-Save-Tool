@@ -71,11 +71,7 @@ namespace f4lib.Save
 
             reader.BaseStream.Seek(index.offset5, SeekOrigin.Begin);
 
-            while (true) {
-                if (stream.Position >= index.offset6 || stream.Position >= stream.Length) {
-                    break;
-                }
-
+            for(var i = 0; i < index.blockCount4; i++) {
                 var formBlock = new FormBlock();
                 formBlock.read(reader);
                 formBlocks.Add(formBlock);

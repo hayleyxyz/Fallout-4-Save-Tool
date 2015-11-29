@@ -95,9 +95,9 @@
             this.idBlocksTabPage.Location = new System.Drawing.Point(4, 22);
             this.idBlocksTabPage.Name = "idBlocksTabPage";
             this.idBlocksTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.idBlocksTabPage.Size = new System.Drawing.Size(426, 397);
+            this.idBlocksTabPage.Size = new System.Drawing.Size(556, 544);
             this.idBlocksTabPage.TabIndex = 1;
-            this.idBlocksTabPage.Text = "ID Blocks";
+            this.idBlocksTabPage.Text = global::f4st.strings.IdBlocks;
             this.idBlocksTabPage.UseVisualStyleBackColor = true;
             // 
             // idBlocksFragment
@@ -105,7 +105,7 @@
             this.idBlocksFragment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.idBlocksFragment.Location = new System.Drawing.Point(3, 3);
             this.idBlocksFragment.Name = "idBlocksFragment";
-            this.idBlocksFragment.Size = new System.Drawing.Size(420, 391);
+            this.idBlocksFragment.Size = new System.Drawing.Size(550, 538);
             this.idBlocksFragment.TabIndex = 0;
             // 
             // formBlocksTabPage
@@ -114,9 +114,9 @@
             this.formBlocksTabPage.Location = new System.Drawing.Point(4, 22);
             this.formBlocksTabPage.Name = "formBlocksTabPage";
             this.formBlocksTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.formBlocksTabPage.Size = new System.Drawing.Size(426, 397);
+            this.formBlocksTabPage.Size = new System.Drawing.Size(556, 544);
             this.formBlocksTabPage.TabIndex = 2;
-            this.formBlocksTabPage.Text = "Form Blocks";
+            this.formBlocksTabPage.Text = global::f4st.strings.FormBlocks;
             this.formBlocksTabPage.UseVisualStyleBackColor = true;
             // 
             // formBlocksFragment
@@ -124,7 +124,7 @@
             this.formBlocksFragment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.formBlocksFragment.Location = new System.Drawing.Point(3, 3);
             this.formBlocksFragment.Name = "formBlocksFragment";
-            this.formBlocksFragment.Size = new System.Drawing.Size(420, 391);
+            this.formBlocksFragment.Size = new System.Drawing.Size(550, 538);
             this.formBlocksFragment.TabIndex = 0;
             // 
             // MainForm

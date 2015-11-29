@@ -28,13 +28,11 @@
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.formBlocksListContextMenu = new System.Windows.Forms.ContextMenu();
             this.extractMenuItem = new System.Windows.Forms.MenuItem();
             this.copyColumnMenuItem = new System.Windows.Forms.MenuItem();
-            this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.formBlocksList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,9 +41,7 @@
             this.formBlocksList.AllColumns.Add(this.olvColumn1);
             this.formBlocksList.AllColumns.Add(this.olvColumn2);
             this.formBlocksList.AllColumns.Add(this.olvColumn5);
-            this.formBlocksList.AllColumns.Add(this.olvColumn8);
             this.formBlocksList.AllColumns.Add(this.olvColumn6);
-            this.formBlocksList.AllColumns.Add(this.olvColumn7);
             this.formBlocksList.AllColumns.Add(this.olvColumn3);
             this.formBlocksList.AllColumns.Add(this.olvColumn4);
             this.formBlocksList.CellEditUseWholeCell = false;
@@ -53,9 +49,7 @@
             this.olvColumn1,
             this.olvColumn2,
             this.olvColumn5,
-            this.olvColumn8,
             this.olvColumn6,
-            this.olvColumn7,
             this.olvColumn3,
             this.olvColumn4});
             this.formBlocksList.ContextMenu = this.formBlocksListContextMenu;
@@ -97,12 +91,6 @@
             this.olvColumn6.AspectToStringFormat = "";
             this.olvColumn6.Text = "Type";
             // 
-            // olvColumn7
-            // 
-            this.olvColumn7.AspectName = "version";
-            this.olvColumn7.AspectToStringFormat = "0x{0:X2}";
-            this.olvColumn7.Text = "Version";
-            // 
             // olvColumn3
             // 
             this.olvColumn3.AspectName = "deflatedLength";
@@ -132,12 +120,6 @@
             this.copyColumnMenuItem.Index = 1;
             this.copyColumnMenuItem.Text = "Copy column";
             // 
-            // olvColumn8
-            // 
-            this.olvColumn8.AspectName = "type";
-            this.olvColumn8.AspectToStringFormat = "0x{0:X2}";
-            this.olvColumn8.Text = "Type";
-            // 
             // FormBlocksFragment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,7 +144,5 @@
         private System.Windows.Forms.MenuItem copyColumnMenuItem;
         private BrightIdeasSoftware.OLVColumn olvColumn5;
         private BrightIdeasSoftware.OLVColumn olvColumn6;
-        private BrightIdeasSoftware.OLVColumn olvColumn7;
-        private BrightIdeasSoftware.OLVColumn olvColumn8;
     }
 }
