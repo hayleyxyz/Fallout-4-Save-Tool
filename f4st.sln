@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "f4st", "f4st\f4st.csproj", "{38ECB614-775D-4CC2-84E2-218BDADB0536}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "f4lib", "f4lib\f4lib.shproj", "{FFE4355F-61CD-45EB-9BF5-B1A01A0D142A}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		f4lib\f4lib.projitems*{ffe4355f-61cd-45eb-9bf5-b1a01a0d142a}*SharedItemsImports = 13
+		f4lib\f4lib.projitems*{38ecb614-775d-4cc2-84e2-218bdadb0536}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38ECB614-775D-4CC2-84E2-218BDADB0536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38ECB614-775D-4CC2-84E2-218BDADB0536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38ECB614-775D-4CC2-84E2-218BDADB0536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38ECB614-775D-4CC2-84E2-218BDADB0536}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

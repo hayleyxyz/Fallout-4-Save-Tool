@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>ffe4355f-61cd-45eb-9bf5-b1a01a0d142a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>f4lib</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\InvalidSaveFormatException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save\ApplicationInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save\FormBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save\Header.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save\IdBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save\Index.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save\SaveFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save\SaveFragment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save\Screenshot.cs" />
+  </ItemGroup>
+</Project>
