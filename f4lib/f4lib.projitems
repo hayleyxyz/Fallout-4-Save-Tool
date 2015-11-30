@@ -18,5 +18,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Save\SaveFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Save\SaveFragment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Save\Screenshot.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\Buffer.cs" />
   </ItemGroup>
 </Project>

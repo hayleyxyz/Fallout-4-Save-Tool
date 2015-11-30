@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
+using System.Security.Cryptography;
 
 namespace f4lib.Save
 {
-    public class FormBlock : SaveFragment {
+    public class FormBlock : SaveFragment, IEquatable<FormBlock> {
 
         public enum LengthType : uint {
             UInt8 = 0,
@@ -128,6 +129,19 @@ namespace f4lib.Save
                     return inflated;
                 }
             }
+        }
+
+        public bool Equals(FormBlock other) {
+            if (other.id == this.id && other.type == this.type) {
+                var sha = new SHA1Cng();
+
+                var hashA = sha.ComputeHash(this.data);
+                var hashB = sha.ComputeHash(other.data);
+
+                return Utils.Buffer.compare(hashA, hashB);
+            }
+
+            return false;
         }
 
     }

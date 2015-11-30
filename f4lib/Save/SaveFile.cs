@@ -13,8 +13,8 @@ namespace f4lib.Save
         public Screenshot screenshot;
         public ApplicationInfo applicationInfo;
         public Index index;
-        public List<IdBlock> idBlocks;
-        public List<FormBlock> formBlocks;
+        public Dictionary<uint, IdBlock> idBlocks;
+        public Dictionary<uint, FormBlock> formBlocks;
 
         public SaveFile(Stream stream) {
             this.stream = stream;
@@ -41,14 +41,14 @@ namespace f4lib.Save
             index = new Index();
             index.read(reader);
 
-            idBlocks = new List<IdBlock>();
+            idBlocks = new Dictionary<uint, IdBlock>();
 
             reader.BaseStream.Seek(index.offset3, SeekOrigin.Begin);
 
             for(var i = 0; i < index.blockCount1; i++) {
                 var idBlock = new IdBlock();
                 idBlock.read(reader);
-                idBlocks.Add(idBlock);
+                idBlocks.Add(idBlock.id, idBlock);
             }
 
             reader.BaseStream.Seek(index.offset4, SeekOrigin.Begin);
@@ -56,7 +56,7 @@ namespace f4lib.Save
             for (var i = 0; i < index.blockCount2; i++) {
                 var idBlock = new IdBlock();
                 idBlock.read(reader);
-                idBlocks.Add(idBlock);
+                idBlocks.Add(idBlock.id, idBlock);
             }
 
             reader.BaseStream.Seek(index.offset6, SeekOrigin.Begin);
@@ -64,17 +64,17 @@ namespace f4lib.Save
             for (var i = 0; i < index.blockCount3; i++) {
                 var idBlock = new IdBlock();
                 idBlock.read(reader);
-                idBlocks.Add(idBlock);
+                idBlocks.Add(idBlock.id, idBlock);
             }
 
-            formBlocks = new List<FormBlock>();
+            formBlocks = new Dictionary<uint, FormBlock>();
 
             reader.BaseStream.Seek(index.offset5, SeekOrigin.Begin);
 
             for(var i = 0; i < index.blockCount4; i++) {
                 var formBlock = new FormBlock();
                 formBlock.read(reader);
-                formBlocks.Add(formBlock);
+                formBlocks.Add(formBlock.id, formBlock);
             }
         }
     }

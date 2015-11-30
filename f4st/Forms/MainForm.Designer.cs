@@ -34,6 +34,7 @@
             this.idBlocksFragment = new f4st.Fragments.IdBlocksFragment();
             this.formBlocksTabPage = new System.Windows.Forms.TabPage();
             this.formBlocksFragment = new f4st.Fragments.FormBlocksFragment();
+            this.compareMenuItem = new System.Windows.Forms.MenuItem();
             this.tabControl.SuspendLayout();
             this.overviewTabPage.SuspendLayout();
             this.idBlocksTabPage.SuspendLayout();
@@ -49,7 +50,8 @@
             // 
             this.fileMenuItem.Index = 0;
             this.fileMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.openMenuItem});
+            this.openMenuItem,
+            this.compareMenuItem});
             this.fileMenuItem.Text = "File";
             // 
             // openMenuItem
@@ -127,6 +129,12 @@
             this.formBlocksFragment.Size = new System.Drawing.Size(550, 538);
             this.formBlocksFragment.TabIndex = 0;
             // 
+            // compareMenuItem
+            // 
+            this.compareMenuItem.Index = 1;
+            this.compareMenuItem.Text = "Compare save...";
+            this.compareMenuItem.Click += new System.EventHandler(this.compareMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,5 +164,6 @@
         private Fragments.IdBlocksFragment idBlocksFragment;
         private System.Windows.Forms.TabPage formBlocksTabPage;
         private Fragments.FormBlocksFragment formBlocksFragment;
+        private System.Windows.Forms.MenuItem compareMenuItem;
     }
 }

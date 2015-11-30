@@ -15,6 +15,8 @@ using f4st.Fragments;
 namespace f4st.Forms {
     public partial class MainForm : Form {
 
+        protected SaveFile saveFile;
+
         public MainForm() {
             InitializeComponent();
         }
@@ -26,16 +28,87 @@ namespace f4st.Forms {
 
             if(ofd.ShowDialog() == DialogResult.OK) {
                 using (var stream = File.OpenRead(ofd.FileName)) {
-                    var save = new SaveFile(stream);
+                    saveFile = new SaveFile(stream);
 
-                    save.read();
+                    saveFile.read();
 
-                    overviewFragment.loadSave(save);
-                    idBlocksFragment.loadSave(save);
-                    idBlocksTabPage.Text = String.Format("{0} ({1:n0})", strings.IdBlocks, save.idBlocks.Count);
+                    overviewFragment.loadSave(saveFile);
+                    idBlocksFragment.loadSave(saveFile);
+                    idBlocksTabPage.Text = String.Format("{0} ({1:n0})", strings.IdBlocks, saveFile.idBlocks.Count);
 
-                    formBlocksFragment.loadSave(save);
-                    formBlocksTabPage.Text = String.Format("{0} ({1:n0})", strings.FormBlocks, save.formBlocks.Count);
+                    formBlocksFragment.loadSave(saveFile);
+                    formBlocksTabPage.Text = String.Format("{0} ({1:n0})", strings.FormBlocks, saveFile.formBlocks.Count);
+                }
+            }
+        }
+
+        private void compareMenuItem_Click(object sender, EventArgs e) {
+            var ofd = new OpenFileDialog() {
+                Filter = "Fallout 4 Save Files (*.fos)|*.fos|All Files|*"
+            };
+
+            if (ofd.ShowDialog() != DialogResult.OK) {
+                return;
+            }
+
+            var fbd = new FolderBrowserDialog();
+
+            if(fbd.ShowDialog() != DialogResult.OK) {
+                return;
+            }
+
+            var targetDirA = String.Format("{0}\\A", fbd.SelectedPath);
+            var targetDirB = String.Format("{0}\\B", fbd.SelectedPath);
+
+            if(!Directory.Exists(targetDirA)) {
+                Directory.CreateDirectory(targetDirA);
+            }
+
+            if (!Directory.Exists(targetDirB)) {
+                Directory.CreateDirectory(targetDirB);
+            }
+
+            using (var stream = File.OpenRead(ofd.FileName)) {
+                var compareSaveFile = new SaveFile(stream);
+
+                compareSaveFile.read();
+
+                string targetFile = null;
+
+                foreach (var block in saveFile.idBlocks.Values) {
+                    if(!compareSaveFile.idBlocks.ContainsKey(block.id)) {
+                        targetFile = String.Format("{0}\\{1:X8}.bin", targetDirA, block.id);
+                        File.WriteAllBytes(targetFile, block.data);
+                    }
+                    else {
+                        var otherBlock = compareSaveFile.idBlocks[block.id];
+
+                        if (!block.Equals(otherBlock)) {
+                            targetFile = String.Format("{0}\\{1:X8}.bin", targetDirA, block.id);
+                            File.WriteAllBytes(targetFile, block.data);
+
+                            targetFile = String.Format("{0}\\{1:X8}.bin", targetDirB, block.id);
+                            File.WriteAllBytes(targetFile, otherBlock.data);
+                        }
+                    }
+                }
+
+                foreach(var block in saveFile.formBlocks.Values) {
+                    if(!compareSaveFile.formBlocks.ContainsKey(block.id)) {
+                        targetFile = String.Format("{0}\\{2}_{1:X8}.bin", targetDirA, block.id, block.getTypeName());
+                        File.WriteAllBytes(targetFile, block.inflateData());
+                    }
+                    else {
+                        var otherBlock = compareSaveFile.formBlocks[block.id];
+
+                        if (!block.Equals(otherBlock)) {
+                            targetFile = String.Format("{0}\\{2}_{1:X8}.bin", targetDirA, block.id, block.getTypeName());
+                            File.WriteAllBytes(targetFile, block.inflateData());
+
+                            targetFile = String.Format("{0}\\{2}_{1:X8}.bin", targetDirB, block.id, block.getTypeName());
+                            File.WriteAllBytes(targetFile, otherBlock.inflateData());
+                        }
+                    }
                 }
             }
         }

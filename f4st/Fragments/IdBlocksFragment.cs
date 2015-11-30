@@ -21,7 +21,7 @@ namespace f4st.Fragments {
         }
 
         public void loadSave(SaveFile saveFile) {
-            idBlocksList.SetObjects(saveFile.idBlocks);
+            idBlocksList.SetObjects(saveFile.idBlocks.Values);
             idBlocksList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
