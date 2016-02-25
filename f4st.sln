@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "f4st", "f4st\f4st.csproj", 
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "f4lib", "f4lib\f4lib.shproj", "{FFE4355F-61CD-45EB-9BF5-B1A01A0D142A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9EECA738-95B4-4AFE-8205-267F67BABB0B}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		f4lib\f4lib.projitems*{ffe4355f-61cd-45eb-9bf5-b1a01a0d142a}*SharedItemsImports = 13
