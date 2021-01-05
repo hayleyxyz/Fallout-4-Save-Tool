@@ -39,7 +39,7 @@ namespace f4st.Fragments {
             addOverviewItem("Form version", saveFile.applicationInfo.formVersion);
             addOverviewItem("Application version", saveFile.applicationInfo.applicationVersion);
             addOverviewItem("Data files length", saveFile.applicationInfo.dataFilesLength);
-            addOverviewItem("Data files count", saveFile.applicationInfo.dataFilesCount);
+            addOverviewItem("Data files count", saveFile.applicationInfo.dataFiles.Count);
 
             for(var i = 0; i < saveFile.applicationInfo.dataFiles.Count; i++) {
                 var name = String.Format("Data file #{0}", i);

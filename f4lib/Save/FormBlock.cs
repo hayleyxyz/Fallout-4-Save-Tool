@@ -17,6 +17,7 @@ namespace f4lib.Save
         public long offset;
 
         public uint id;
+        public uint rawId;
         public uint flags;
         public byte type;
         public byte version;
@@ -29,7 +30,7 @@ namespace f4lib.Save
             0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24,
             0x26, 0x2A, 0x2B, 0x2C, 0x2F, 0x30, 0x31, 0x32, 0x6A, 0x0D,
             0x0E, 0x52, 0x4C, 0x7A, 0x15, 0x75, 0x7E, 0x6B, 0x7D, 0x49,
-            0x48, 0x47, 0x5E, 0x2E, 0x38, 0x55, 0x43, 0x18, 0x37
+            0x48, 0x47, 0x5E, 0x2E, 0x38, 0x55, 0x43, 0x18, 0x37, 0x93
         };
 
         public static readonly string[] typeNames = new string[] {
@@ -60,6 +61,7 @@ namespace f4lib.Save
 
             var idBytes = reader.ReadBytes(3);
             id = extractId(idBytes);
+            rawId = (uint)((idBytes[0] << 16) | (idBytes[1] << 8) | idBytes[2]);
 
             flags = reader.ReadUInt32();
             type = reader.ReadByte();
@@ -88,23 +90,12 @@ namespace f4lib.Save
             uint a, b;
 
             a = (uint)((data[0] << 16) | (data[1] << 8) | data[2]);
-
-            if (a == 0xC00000) {
-                // TODO
-                throw new NotImplementedException();
+            uint v4 = 0x800000;
+            if(data[0] == 0) {
+                v4 = 0x400000;
             }
-            else {
-                if ((a & 0x400000) != 0) {
-                    b = 0;
-                }
-                else {
-                    b = 0xFF000000;
-                }
 
-                b |= (a & 0xFF3FFFFF);
-
-                return b;
-            }
+            return a | v4;
         }
 
         public string getTypeName() {

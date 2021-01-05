@@ -74,7 +74,7 @@ namespace f4lib.Save
             for(var i = 0; i < index.blockCount4; i++) {
                 var formBlock = new FormBlock();
                 formBlock.read(reader);
-                formBlocks.Add(formBlock.id, formBlock);
+                formBlocks.Add(formBlock.rawId, formBlock);
             }
         }
     }
