@@ -39,6 +39,8 @@ namespace f4st.Forms {
                     formBlocksFragment.loadSave(saveFile);
                     formBlocksTabPage.Text = String.Format("{0} ({1:n0})", strings.FormBlocks, saveFile.formBlocks.Count);
                 }
+
+                saveScreenshotMenuItem.Enabled = true;
             }
         }
 
@@ -110,6 +112,45 @@ namespace f4st.Forms {
                         }
                     }
                 }
+            }
+        }
+
+        private void saveScreenshotMenuItem_Click(object sender, EventArgs e) {
+            var sfd = new SaveFileDialog();
+            
+            if(sfd.ShowDialog() != DialogResult.OK) {
+                return;
+            }
+
+            using(var stream = sfd.OpenFile()) {
+                var data = saveFile.screenshot.pixelData;
+                unsafe {
+                    fixed(byte* p = data) {
+                        var i = new System.Drawing.Bitmap((int)saveFile.screenshot.width, (int)saveFile.screenshot.height); //, 4, System.Drawing.Imaging.PixelFormat.Format32bppPArgb, new IntPtr(p));
+
+                        for(var y = 0; y < saveFile.screenshot.height; y++) {
+                            for(var x = 0; x < saveFile.screenshot.width; x++) {
+
+                                i.SetPixel(x, y, Color.FromArgb(data[(((y * saveFile.screenshot.width) + x) * 4) + 0], data[(((y * saveFile.screenshot.width) + x) * 4) + 1], data[(((y * saveFile.screenshot.width) + x) * 4) + 2]));
+                            }
+                        }
+                        +
+                        using(var ms = new MemoryStream()) {
+                            Bitmap bmp = new Bitmap(i);
+                            bmp.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                            var d = ms.ToArray();
+                        }
+
+                        
+                        //i.Save(stream, System.Drawing.Imaging.ImageCodecInfo)
+                        
+                    }
+                }
+
+                
+                
+
+                
             }
         }
     }

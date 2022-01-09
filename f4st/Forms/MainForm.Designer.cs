@@ -27,6 +27,7 @@
             this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
             this.fileMenuItem = new System.Windows.Forms.MenuItem();
             this.openMenuItem = new System.Windows.Forms.MenuItem();
+            this.compareMenuItem = new System.Windows.Forms.MenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.overviewTabPage = new System.Windows.Forms.TabPage();
             this.overviewFragment = new f4st.Fragments.OverviewFragment();
@@ -34,7 +35,7 @@
             this.idBlocksFragment = new f4st.Fragments.IdBlocksFragment();
             this.formBlocksTabPage = new System.Windows.Forms.TabPage();
             this.formBlocksFragment = new f4st.Fragments.FormBlocksFragment();
-            this.compareMenuItem = new System.Windows.Forms.MenuItem();
+            this.saveScreenshotMenuItem = new System.Windows.Forms.MenuItem();
             this.tabControl.SuspendLayout();
             this.overviewTabPage.SuspendLayout();
             this.idBlocksTabPage.SuspendLayout();
@@ -51,14 +52,22 @@
             this.fileMenuItem.Index = 0;
             this.fileMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.openMenuItem,
-            this.compareMenuItem});
+            this.compareMenuItem,
+            this.saveScreenshotMenuItem});
             this.fileMenuItem.Text = "File";
             // 
             // openMenuItem
             // 
             this.openMenuItem.Index = 0;
-            this.openMenuItem.Text = "Open...";
+            this.openMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
+            this.openMenuItem.Text = "Open";
             this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
+            // 
+            // compareMenuItem
+            // 
+            this.compareMenuItem.Index = 1;
+            this.compareMenuItem.Text = "Compare Save";
+            this.compareMenuItem.Click += new System.EventHandler(this.compareMenuItem_Click);
             // 
             // tabControl
             // 
@@ -129,11 +138,12 @@
             this.formBlocksFragment.Size = new System.Drawing.Size(550, 538);
             this.formBlocksFragment.TabIndex = 0;
             // 
-            // compareMenuItem
+            // saveScreenshotMenuItem
             // 
-            this.compareMenuItem.Index = 1;
-            this.compareMenuItem.Text = "Compare save...";
-            this.compareMenuItem.Click += new System.EventHandler(this.compareMenuItem_Click);
+            this.saveScreenshotMenuItem.Enabled = false;
+            this.saveScreenshotMenuItem.Index = 2;
+            this.saveScreenshotMenuItem.Text = "Save Screenshot";
+            this.saveScreenshotMenuItem.Click += new System.EventHandler(this.saveScreenshotMenuItem_Click);
             // 
             // MainForm
             // 
@@ -165,5 +175,6 @@
         private System.Windows.Forms.TabPage formBlocksTabPage;
         private Fragments.FormBlocksFragment formBlocksFragment;
         private System.Windows.Forms.MenuItem compareMenuItem;
+        private System.Windows.Forms.MenuItem saveScreenshotMenuItem;
     }
 }
